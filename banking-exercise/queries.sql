@@ -1,0 +1,5 @@
+-- QUERY STATEMENTS
+
+-- GET ALL CUSTOMER ON NORTH STREET
+
+SELECT * FROM customer WHERE customer_street="North";
