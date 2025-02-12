@@ -1,7 +1,7 @@
 -- INSERT DATA INTO BANK DB
 
 -- START BY DELETING EXISTING DATA
-
+-- NOTE: This is probably horribly unsafe and probably shouldn't be done like this
 DELETE FROM branch;
 DELETE FROM customer;
 
