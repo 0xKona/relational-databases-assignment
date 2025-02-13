@@ -2,6 +2,11 @@
 
 CREATE DATABASE IF NOT EXISTS bank;
 
+DROP TABLE depositor;
+DROP TABLE account;
+DROP TABLE branch;
+DROP TABLE customer;
+
 CREATE TABLE IF NOT EXISTS branch (
 	branch_name VARCHAR(100) NOT NULL,
     branch_city VARCHAR(50) NOT NULL,
