@@ -2,10 +2,10 @@
 
 -- START BY DELETING EXISTING DATA
 -- NOTE: This is probably horribly unsafe and probably shouldn't be done like this
-DELETE FROM depositor;
-DELETE FROM account;
-DELETE FROM branch;
-DELETE FROM customer;
+-- DELETE FROM depositor;
+-- DELETE FROM account;
+-- DELETE FROM branch;
+-- DELETE FROM customer;
 
 -- Insert customer data
 
