@@ -1,12 +1,12 @@
-### Relational Databases Module Exercises
+# Relational Databases Module Exercises
 
 - This repo contains exercises completing in the Realtional Databases module.
 
-## Running the database
+## Starting a mySQL instance with docker
 
 - Start by running `docker compose up`
 
-## Access Database
+### Access Database
 
 - Command line:
 
@@ -23,4 +23,8 @@
 
     ```
 
-- You can also connect using something like mysql workbench
+- You can also connect using mysql workbench
+
+## Starting a mySQL instance using local install
+
+- Simply access using localhost:3306 in sql workbench
