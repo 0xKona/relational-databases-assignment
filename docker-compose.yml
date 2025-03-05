@@ -8,4 +8,4 @@ services:
      - MYSQL_ROOT_PASSWORD=password
      - MYSQL_DATABASE=test-db
    volumes:
-     - /test-db:/var/lib/mysql `
+     - ./test-db:/var/lib/mysql `
