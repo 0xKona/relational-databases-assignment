@@ -73,7 +73,7 @@ INSERT INTO dependent VALUES("333445555","Joy","F","1948-05-03","Spouse");
 INSERT INTO dependent VALUES("987654321","Abner","M","1932-02-29","Spouse");
 INSERT INTO dependent VALUES("123456789","Michael","M","1978-01-01","Son");
 INSERT INTO dependent VALUES("123456789","Alice","F","1978-12-31","Daughter");
-INSERT INTO dependent VALUES("123456789","Elizabeth","F","0000-00-00","Spouse");
+INSERT INTO dependent VALUES("123456789","Elizabeth","F","0001-01-01","Spouse");
 INSERT INTO dependent VALUES("444444400","Johnny","M","1997-04-04","Son");
 INSERT INTO dependent VALUES("444444400","Tommy","M","1999-06-07","Son");
 INSERT INTO dependent VALUES("444444401","Chris","M","1969-04-19","Spouse");
