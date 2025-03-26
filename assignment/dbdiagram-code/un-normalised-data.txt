@@ -1,0 +1,15 @@
+Table UnnormalizedData {
+  id int [primary key]
+  name varchar
+  password varchar
+  email varchar
+  profile_pic varchar
+  friends text
+  chats text
+  sent_messages text
+  account_banned boolean
+  banned_in_games text
+  owned_games text
+  multiplayer_games text
+  review_for_game text
+}

@@ -1,0 +1,79 @@
+Table Accounts {
+  account_id int [primary key]
+  username varchar
+  email varchar
+  password varchar
+  profile_pic varchar
+  account_banned boolean
+}
+
+Table Friends {
+  account1_id int [ref: > Accounts.account_id]
+  account2_id int [ref: > Accounts.account_id]
+  friends_since date
+}
+
+Table Chats {
+  chat_id int [primary key]
+  chat_name varchar
+  chat_image varchar
+}
+
+Table Messages {
+  message_id int [primary key]
+  chat_id int [ref: > Chats.chat_id]
+  sent_by int [ref: > Accounts.account_id]
+  message text
+}
+
+Table User_in_Chat {
+  account_id int [ref: > Accounts.account_id]
+  chat_id int [ref: > Chats.chat_id]
+  role varchar
+}
+
+Table Games {
+  game_id int [primary key]
+  name varchar
+  description text
+  multiplayer boolean
+  hardware_requirements int [ref: > Hardware.id]
+  publisher varchar
+  release_date date
+}
+
+Table Game_Bans {
+  ban_id int [primary key]
+  account_id int [ref: > Accounts.account_id]
+  game_id int [ref: > Games.game_id]
+  expires date
+  reason text
+}
+
+Table Owned_Games {
+  account_id int [ref: > Accounts.account_id]
+  game_id int [ref: > Games.game_id]
+  date_acquired date
+}
+
+Table Reviews {
+  review_id int [primary key]
+  written_by int [ref: > Accounts.account_id]
+  game_id int [ref: > Games.game_id]
+  text text
+  rating int
+}
+
+Table Hardware {
+  id int [primary key]
+  mac boolean
+  windows boolean
+  linux boolean
+  min_cpu varchar
+  rec_cpu varchar
+  min_memory varchar
+  rec_memory varchar
+  min_gpu varchar
+  rec_gpu varchar
+  storage varchar
+}
