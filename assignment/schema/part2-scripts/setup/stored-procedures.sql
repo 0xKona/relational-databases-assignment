@@ -61,10 +61,10 @@ BEGIN
 END $$
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS GetFriendsByAccountID;
-DELIMITER $$
 
 -- Returns a list of friends an account has
+DROP PROCEDURE IF EXISTS GetFriendsByAccountID;
+DELIMITER $$
 CREATE PROCEDURE GetFriendsByAccountID(IN account_id_param INT)
 BEGIN
     -- Find friend IDs
@@ -86,5 +86,33 @@ BEGIN
     INNER JOIN friend_ids f ON a.account_id = f.friend_id;
 END$$
 DELIMITER ;
+
+-- Soft delete account in accordance with UK GDPR
+DROP PROCEDURE IF EXISTS SoftAccountDelete;
+DELIMITER $$
+CREATE PROCEDURE SoftAccountDelete(IN account_id_param INT, IN hashed_email TEXT)
+BEGIN
+    UPDATE account
+        SET
+          email = hashed_email, -- SAVE A HASHED EMAIL IN CASE OF ACCOUNT RECOVERY
+          username = CONCAT('deleted_user_', account_id),
+          password_hash = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          profile_pic_url = NULL,
+          active_account = 0
+        WHERE account_id = account_id_param;
+END $$
+DELIMITER ;
+
+-- Full Delete after data retention period (1-2 years for audit purposes)
+DROP PROCEDURE IF EXISTS FullAccountDelete;
+DELIMITER $$
+CREATE PROCEDURE FullAccountDelete(IN account_id_param INT)
+BEGIN
+   DELETE FROM account WHERE account_id = account_id_param;
+END $$
+DELIMITER ;
+
+
+
 
 

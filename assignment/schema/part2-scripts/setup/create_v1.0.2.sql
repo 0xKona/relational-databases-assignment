@@ -13,11 +13,13 @@ CREATE TABLE IF NOT EXISTS `account` (
   `account_id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(320) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
-  `password_hash` CHAR(64) NOT NULL, -- SHA-256 
+  `password_hash` CHAR(64) NOT NULL, -- SHA-256
   `profile_pic_url` VARCHAR(200) NULL,
   `account_banned` TINYINT NULL,
   `account_created` DATETIME NULL,
   `last_login` DATETIME NULL,
+  `active_account` TINYINT NOT NULL DEFAULT 1,
+  `deleted_on` DATETIME NULL,
   PRIMARY KEY (`account_id`),
   UNIQUE(`email`),
   UNIQUE(`username`));
@@ -38,15 +40,14 @@ CREATE TABLE IF NOT EXISTS `publisher` (
   `publisher_id` INT NOT NULL AUTO_INCREMENT,
   `publisher_name` VARCHAR(50) NOT NULL,
   `bio` VARCHAR(500) NULL,
-  `publisher_admin` INT NOT NULL,
+  `publisher_admin` INT NULL,
   PRIMARY KEY (`publisher_id`),
   UNIQUE INDEX `publisher_id_UNIQUE` (`publisher_id` ASC) VISIBLE,
   INDEX `publisher_admin_idx` (`publisher_admin` ASC) VISIBLE,
   CONSTRAINT `publisher_admin`
     FOREIGN KEY (`publisher_admin`)
     REFERENCES `marketplace`.`account` (`account_id`)
-    -- If a publisher is removed then all of their games should be aswell
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE);
 
 -- -----------------------------------------------------
@@ -80,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `game` (
   `release_date` DATETIME NULL,
   `system_requirements` INT NULL,
   `price` DECIMAL(10, 2) NULL,
+  `available` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`game_id`),
   UNIQUE INDEX `game_id_UNIQUE` (`game_id` ASC) VISIBLE,
   INDEX `publisher_idx` (`publisher` ASC) VISIBLE,
@@ -87,14 +89,14 @@ CREATE TABLE IF NOT EXISTS `game` (
   CONSTRAINT `game_publisher`
     FOREIGN KEY (`publisher`)
     REFERENCES `publisher` (`publisher_id`)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT `system_requirements`
     FOREIGN KEY (`system_requirements`)
     REFERENCES `system_requirements` (`requirements_id`)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE NO ACTION,
-    UNIQUE(`name`));
+  UNIQUE(`name`));
 
 
 -- -----------------------------------------------------
@@ -176,12 +178,12 @@ CREATE TABLE IF NOT EXISTS `game_ban` (
   CONSTRAINT `ban_account`
     FOREIGN KEY (`account`)
     REFERENCES `account` (`account_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `ban_game`
     FOREIGN KEY (`game`)
     REFERENCES `game` (`game_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
 
