@@ -1,7 +1,7 @@
 -- -----------------------------------------------------
 -- S183038 Schema: Marketplace
 -- -----------------------------------------------------
-DROP DATABASE marketplace;
+DROP DATABASE IF EXISTS marketplace;
 CREATE DATABASE IF NOT EXISTS marketplace;
 USE marketplace;
 -- -----------------------------------------------------
@@ -93,7 +93,8 @@ CREATE TABLE IF NOT EXISTS `game` (
     FOREIGN KEY (`system_requirements`)
     REFERENCES `system_requirements` (`requirements_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION,
+    UNIQUE(`name`));
 
 
 -- -----------------------------------------------------
@@ -119,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `review` (
   CONSTRAINT `review_game`
     FOREIGN KEY (`game`)
     REFERENCES `game` (`game_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
 
@@ -175,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `game_ban` (
   CONSTRAINT `ban_account`
     FOREIGN KEY (`account`)
     REFERENCES `account` (`account_id`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `ban_game`
     FOREIGN KEY (`game`)
@@ -231,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `user_in_chat` (
   CONSTRAINT `user_in_chat_chat_id`
     FOREIGN KEY (`chat_id`)
     REFERENCES `chat` (`chat_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `user_in_chat_account`
     FOREIGN KEY (`account`)
@@ -290,3 +291,26 @@ CREATE TABLE IF NOT EXISTS `friends` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
+
+DROP USER 'app_user'@'%';
+DROP USER 'readonly_user'@'%';
+DROP USER 'market_admin'@'127.0.0.1';
+
+-- User account for a backend server that would handle requests, can read and write data
+-- but not allowed to alter the schema
+-- % wildcard allows connections from any host, but should be changed to a internal ip in production
+CREATE USER 'app_user'@'%' IDENTIFIED BY 'strongpassword';
+GRANT SELECT, INSERT, UPDATE, DELETE ON marketplace.* TO 'app_user'@'%';  
+
+-- Read only user for analytics and read-only dashboards etc
+CREATE USER 'readonly_user'@'%' IDENTIFIED BY 'readonlypass';
+GRANT SELECT ON marketplace.* TO 'readonly_user'@'%';
+
+-- Admin User, to used by developers that need full control
+CREATE USER 'market_admin'@'127.0.0.1' IDENTIFIED BY 'supersecure';
+GRANT ALL PRIVILEGES ON marketplace.* TO 'market_admin'@'127.0.0.1' WITH GRANT OPTION; 
+-- Allows requests from localhost only, stopping external users from gaining access even if they get password
+
+-- This is how to delete user
+-- REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'app_user'@'%';
+-- DROP USER 'app_user'@'%';

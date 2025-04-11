@@ -15,7 +15,7 @@ with open('insert-users.sql', 'w') as file:
     file.write("USE marketplace;\nDELETE FROM account;\nSTART TRANSACTION;\n")
 
     # Generate entries 
-    numOfEntries = 10000
+    numOfEntries = 1000
     for i in range(numOfEntries):
 
         # Generate a random password and hash it using sha256

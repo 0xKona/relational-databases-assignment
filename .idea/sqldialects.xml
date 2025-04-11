@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/assignment/schema/create_v1.0.2.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/insert-users.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/select-queries.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/stored-procedures.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/test-user-insert-data.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/update-queries.sql" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>
