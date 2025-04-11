@@ -64,6 +64,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS GetFriendsByAccountID;
 DELIMITER $$
 
+-- Returns a list of friends an account has
 CREATE PROCEDURE GetFriendsByAccountID(IN account_id_param INT)
 BEGIN
     -- Find friend IDs
@@ -85,4 +86,5 @@ BEGIN
     INNER JOIN friend_ids f ON a.account_id = f.friend_id;
 END$$
 DELIMITER ;
+
 

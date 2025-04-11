@@ -76,7 +76,7 @@ WHERE account_id = (
 
 -- Get a list of the users friends by account_id using a stored procedure
 CALL GetFriendsByAccountID(1);
-CALL GetFriendsByAccountID(2); -- No friends
+CALL GetFriendsByAccountID(2);
 CALL GetFriendsByAccountID(3);
 
 
