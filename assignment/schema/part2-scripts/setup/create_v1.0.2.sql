@@ -294,9 +294,9 @@ CREATE TABLE IF NOT EXISTS `friends` (
     ON UPDATE NO ACTION
 );
 
-DROP USER 'app_user'@'%';
-DROP USER 'readonly_user'@'%';
-DROP USER 'market_admin'@'127.0.0.1';
+DROP USER IF EXISTS 'app_user'@'%';
+DROP USER IF EXISTS 'readonly_user'@'%';
+DROP USER IF EXISTS 'market_admin'@'127.0.0.1';
 
 -- User account for a backend server that would handle requests, can read and write data
 -- but not allowed to alter the schema
