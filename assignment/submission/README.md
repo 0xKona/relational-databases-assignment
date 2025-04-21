@@ -23,8 +23,8 @@ Environment Notes:
 ------------------
 - Developed using Docker with MySQL 9.2.
 - Scripts are fully compatible with MySQL Workbench or any standard MySQL 9.2 environment.
-- To restore the dump using local mysql:
-    mysql -u root -p marketplace < marketplace_dump.sql from the directory of the dump file
+- To restore the dump using local mysql run:
+    `mysql -u root -p create database marketplace; marketplace < marketplace_dump.sql;` from the directory of the dump file
 
 Instructions:
 -------------
