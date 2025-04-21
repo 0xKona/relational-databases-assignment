@@ -24,12 +24,11 @@ Environment Notes:
 - Developed using Docker with MySQL 9.2.
 - Scripts are fully compatible with MySQL Workbench or any standard MySQL 9.2 environment.
 - To restore the dump:
-    mysql -u root -p marketplace < marketplace_dump.sql
+    mysql -u root -p marketplace < marketplace_dump.sql from the directory of the dump file
 
 Instructions:
 -------------
 1. Run `create_schema.sql` to create the database and all objects.
 2. Run `test_data.sql` to populate tables with the base sample data.
-3. Run `additional_generated_test_data.sql` to populate tables with the extra generated sample data.
-4. Run `queries.sql` to run the SELECT, UPDATE and DELETE queries.
-5. `marketplace_dump.sql` can be imported directly for quick inspection.
+3. Run `queries.sql` to run the SELECT, UPDATE and DELETE queries.
+4. `marketplace_dump.sql` can be imported directly for quick inspection.
