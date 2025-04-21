@@ -7,7 +7,7 @@ Assignment: Assessment 2 — Database Implementation
 
 Overview:
 ---------
-This submission contains the full implementation of the Online video game marketplace relational database, based on the design from Assessment 1. It includes the schema, test data, query scripts, and a database dump file. All components were developed and tested using MySQL 9.2 in a Dockerized environment to ensure consistency.
+This submission contains the full implementation of the Online video game marketplace relational database, based on the design from Assessment 1. It includes the schema, test data, query scripts, and a database dump file. All components were developed and tested using MySQL 9.2 in a Dockerized environment to ensure consistency and has been tested to run on a local instance of MySQL
 
 Contents:
 ---------
@@ -16,14 +16,14 @@ Contents:
 3. test_data.sql
 4. queries.sql
 5. marketplace_dump_<TIMESTAMP_OF_DUMP>.sql
-6. generate_test_data.py
-   - Python script used to generate additional test data using the Faker library.
+6. python_scripts_used
+   - Folder containing Python scripts used to generate additional test data and get and restore dumps within my dockerized environment.
 
 Environment Notes:
 ------------------
 - Developed using Docker with MySQL 9.2.
 - Scripts are fully compatible with MySQL Workbench or any standard MySQL 9.2 environment.
-- To restore the dump:
+- To restore the dump using local mysql:
     mysql -u root -p marketplace < marketplace_dump.sql from the directory of the dump file
 
 Instructions:
