@@ -12,7 +12,7 @@ NUM_CHATS = 20
 NUM_MESSAGES = 200
 NUM_FRIENDSHIPS = 150
 
-with open("generated_data.sql", "w") as f:
+with open("additional_generated_test_data.sql", "w") as f:
     f.write("USE marketplace;\n\n")
 
     # Accounts
@@ -107,4 +107,4 @@ with open("generated_data.sql", "w") as f:
         text = fake.sentence().replace("'", "")
         f.write(f"INSERT IGNORE INTO message (sent_by, chat_id, text, timestamp) VALUES ({sent_by}, {chat}, '{text}', NOW());\n")
 
-print("SQL data generation complete. File saved as 'generated_data.sql'")
+print("SQL data generation complete. File saved as 'additional_generated_test_data.sql'")

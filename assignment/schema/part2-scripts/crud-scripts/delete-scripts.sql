@@ -10,3 +10,7 @@ CALL SoftAccountDelete(2, 'example_email_hash');
 
 -- Delete account fully after retention period
 CALL FullAccountDelete(2);
+
+-- Delete a review that has an offensive message (example condition)
+DELETE FROM review
+WHERE review_text LIKE '%offensive%';

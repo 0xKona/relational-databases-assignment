@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/crud-scripts/delete-scripts.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/crud-scripts/select-queries.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/crud-scripts/update-queries.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/setup/create_v1.0.2.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/setup/generated_data.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/setup/starting-data.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/assignment/schema/part2-scripts/setup/stored-procedures.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/submission/additional_generated_test_data.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/submission/create_schema.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/submission/queries.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/assignment/submission/test_data.sql" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>
